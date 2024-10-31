@@ -1,0 +1,12 @@
+<div class="calculator">
+  <input readonly [value]="display" class="display" />
+  <div class="button-row" *ngFor="let row of buttons">
+    <button
+      *ngFor="let button of row"
+      (click)="onPress(button)"
+      [class.special]="button === 'C'"
+    >
+      {{ button }}
+    </button>
+  </div>
+</div>

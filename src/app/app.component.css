@@ -1,0 +1,20 @@
+.container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    gap: 35px;
+}
+
+a {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+}
