@@ -1,0 +1,133 @@
+<main class="container">
+  <h1>Calculator App</h1>
+
+  <div class="operation">
+    <label>ADD</label>
+    <input
+      [(ngModel)]="addNum1"
+      placeholder="Enter number"
+      #addNum1Field="ngModel"
+      required
+      pattern="[0-9.]*"
+    />
+    <small class="error" *ngIf="addNum1Field.errors?.['pattern']"
+      >Only numbers allowed!</small
+    >
+    <span class="sign">+</span>
+    <input
+      [(ngModel)]="addNum2"
+      placeholder="Enter number"
+      #addNum2Field="ngModel"
+      required
+      pattern="[0-9.]*"
+    />
+    <small class="error" *ngIf="addNum2Field.errors?.['pattern']"
+      >Only numbers allowed!</small
+    >
+    <button
+      (click)="performCalculation('Addition', addNum1, addNum2)"
+      [disabled]="!verifyNumber(addNum1) || !verifyNumber(addNum2)"
+    >
+      =
+    </button>
+    <span class="result" *ngIf="sumResult">{{ results[0].value }}</span>
+  </div>
+
+  <div class="operation">
+    <label>MINUS</label>
+    <input
+      [(ngModel)]="subNum1"
+      placeholder="Enter number"
+      #subNum1Field="ngModel"
+      required
+      pattern="[0-9.]*"
+    />
+    <small class="error" *ngIf="subNum1Field.errors?.['pattern']"
+      >Only numbers allowed!</small
+    >
+    <span class="sign">-</span>
+    <input
+      [(ngModel)]="subNum2"
+      placeholder="Enter number"
+      #subNum2Field="ngModel"
+      required
+      pattern="[0-9.]*"
+    />
+    <small class="error" *ngIf="subNum2Field.errors?.['pattern']"
+      >Only numbers allowed!</small
+    >
+    <button
+      (click)="performCalculation('Subtraction', subNum1, subNum2)"
+      [disabled]="!verifyNumber(subNum1) || !verifyNumber(subNum2)"
+    >
+      =
+    </button>
+    <span *ngIf="differenceResult">{{ results[1].value }}</span>
+  </div>
+
+  <div class="operation">
+    <label>MULTIPLY</label>
+    <input
+      [(ngModel)]="mulNum1"
+      placeholder="Enter number"
+      #mulNum1Field="ngModel"
+      required
+      pattern="[0-9.]*"
+    />
+    <small class="error" *ngIf="mulNum1Field.errors?.['pattern']"
+      >Only numbers allowed!</small
+    >
+    <span class="sign">*</span>
+    <input
+      [(ngModel)]="mulNum2"
+      placeholder="Enter number"
+      #mulNum2Field="ngModel"
+      required
+      pattern="[0-9.]*"
+    />
+    <small class="error" *ngIf="mulNum2Field.errors?.['pattern']"
+      >Only numbers allowed!</small
+    >
+    <button
+      (click)="performCalculation('Multiplication', mulNum1, mulNum2)"
+      [disabled]="!verifyNumber(mulNum1) || !verifyNumber(mulNum2)"
+    >
+      =
+    </button>
+    <span *ngIf="productResult">{{ results[2].value }}</span>
+  </div>
+
+  <div class="operation">
+    <label>DIVISION</label>
+    <input
+      [(ngModel)]="divNum1"
+      placeholder="Enter number"
+      #divNum1Field="ngModel"
+      required
+      pattern="[0-9.]*"
+    />
+    <small class="error" *ngIf="divNum1Field.errors?.['pattern']"
+      >Only numbers allowed!</small
+    >
+    <span class="sign">÷</span>
+    <input
+      [(ngModel)]="divNum2"
+      placeholder="Enter number"
+      #divNum2Field="ngModel"
+      required
+      pattern="[0-9.]*"
+    />
+    <small class="error" *ngIf="divNum2Field.errors?.['pattern']"
+      >Only numbers allowed!</small
+    >
+    <button
+      (click)="performCalculation('Division', divNum1, divNum2)"
+      [disabled]="!verifyNumber(divNum1) || !verifyNumber(divNum2)"
+    >
+      =
+    </button>
+    <span *ngIf="quotientResult">{{ results[3].value }}</span>
+  </div>
+
+  <button (click)="clearInputs()">Clear All</button>
+</main>
